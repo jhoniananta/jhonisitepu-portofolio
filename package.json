@@ -18,7 +18,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "clsx": "^2.0.0",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.4",
@@ -28,6 +31,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.4.0",
     "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.1"
   },
   "devDependencies": {
