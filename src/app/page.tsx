@@ -2,13 +2,14 @@
 
 import '@/lib/env';
 
-import Navbar from '@/layouts/navbar';
+import Layout from '@/layouts/Layout';
 
 export default function HomePage() {
   return (
-    <main>
-      <Navbar />
-      <section className='bg-white'></section>
-    </main>
+    <Layout withNavbar={true} withFooter={true}>
+      <main className='flex min-h-screen items-center justify-center text-center text-black'>
+        <h1 className='text-3xl font-bold'>Hello World</h1>
+      </main>
+    </Layout>
   );
 }

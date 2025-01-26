@@ -23,7 +23,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
     <>
-      {}
+      {/* Mobile Navbar */}
       <nav className='fixed top-0 left-0 z-50 w-full shadow-md bg-white lg:hidden'>
         <div className='flex overflow-hidden flex-col justify-center p-4 text-xl font-bold tracking-tight leading-tight text-black capitalize whitespace-nowrap'>
           <div className='flex overflow-hidden gap-10 justify-between items-center w-full'>
@@ -67,12 +67,12 @@ export default function Navbar() {
               />
               <h5 className='self-stretch my-auto text-xl font-bold'>Jhoni</h5>
             </div>
-            <div className='flex flex-row justify-between items-center gap-8'>
+            <div className='flex flex-row justify-between items-center gap-10'>
               {navigationItems.map(({ text, href }) => (
                 <UnstyledLink
                   key={text}
                   href={href}
-                  className='text-black font-bold text-lg'
+                  className='text-black font-bold text-lg hover:text-gray-500'
                 >
                   <h5 className='self-stretch my-auto text-xl font-bold'>
                     {text}
