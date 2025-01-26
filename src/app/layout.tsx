@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
+import { Sora } from 'next/font/google';
 import * as React from 'react';
-import { Sora } from 'next/font/google'
 
 import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
@@ -47,7 +47,7 @@ const sora = Sora({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sora',
-})
+});
 
 export default function RootLayout({
   children,
