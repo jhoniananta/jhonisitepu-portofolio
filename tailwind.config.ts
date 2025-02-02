@@ -95,5 +95,9 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('tailwindcss-animate')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('tailwindcss-animate'),
+    require('@designbycode/tailwindcss-text-stroke'),
+  ],
 } satisfies Config;
