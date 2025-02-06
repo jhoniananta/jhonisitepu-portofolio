@@ -4,7 +4,7 @@ import NextImage from '@/components/NextImage';
 export default function HeroSection() {
   return (
     <>
-      <section className='min-h-screen flex flex-col-reverse lg:flex-row items-center justify-evenly mx-4 mt-24 lg:mt-4 lg:mx-8 gap-12 lg:gap-4'>
+      <section className='min-h-screen flex flex-col-reverse lg:flex-row items-center justify-evenly mx-4 mt-24 lg:mt-4 lg:mx-8 gap-12 lg:gap-4 bg-white'>
         <div className='flex flex-col gap-4 lg:gap-7 text-left max-w-[585px]'>
           <h1 className='text-[28px] leading-8 lg:text-[48px] lg:leading-14 font-normal'>
             Hello I'am <span className='font-extrabold'>Jhoni</span>

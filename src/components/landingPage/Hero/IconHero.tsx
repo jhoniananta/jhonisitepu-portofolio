@@ -1,11 +1,7 @@
 import clsx from 'clsx';
 
-type IconButtonProps = {
-  reactIcon?: React.ReactNode;
-  isActive?: boolean;
-  onClick: () => void;
-  href: string;
-};
+import { IconButtonProps } from '@/types/hero';
+
 export default function IconHero({
   reactIcon,
   isActive,

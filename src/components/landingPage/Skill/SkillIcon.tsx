@@ -1,9 +1,6 @@
 import clsx from 'clsx';
 
-type SkillIconProps = {
-  reactIcon?: React.ReactNode;
-  skillText?: string;
-};
+import { SkillIconProps } from '@/types/skill';
 
 export default function SkillIcon({ reactIcon, skillText }: SkillIconProps) {
   return (
