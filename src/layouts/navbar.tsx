@@ -97,7 +97,10 @@ export default function Navbar() {
         <div className='flex overflow-hidden flex-col justify-center p-4 text-xl font-bold tracking-tight leading-tight capitalize whitespace-nowrap'>
           <div className='flex overflow-hidden gap-10 justify-between items-center w-full'>
             <div>
-              <UnstyledLink href='#hero' className='font-bold text-lg hover:text-gray-500 flex gap-3 items-center self-stretch my-auto'>
+              <UnstyledLink
+                href='#hero'
+                className='font-bold text-lg hover:text-gray-500 flex gap-3 items-center self-stretch my-auto'
+              >
                 <NextImage
                   src='/favicon/favicon-32x32.png'
                   alt='Logo'
@@ -135,7 +138,10 @@ export default function Navbar() {
         <div className='flex overflow-hidden xl:px-20 py-6 w-full'>
           <div className='flex px-8 flex-row justify-between items-center w-full'>
             <div>
-              <UnstyledLink href='#hero' className='flex gap-3 items-center self-stretch my-auto'>
+              <UnstyledLink
+                href='#hero'
+                className='flex gap-3 items-center self-stretch my-auto'
+              >
                 <NextImage
                   src='/favicon/favicon-32x32.png'
                   alt='Logo'
