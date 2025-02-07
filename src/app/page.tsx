@@ -5,8 +5,7 @@ import '@/lib/env';
 import ExperienceSection from '@/components/landingPage/Experience/ExperienceSection';
 import HeroSection from '@/components/landingPage/Hero/HeroSection';
 import SkillSection from '@/components/landingPage/Skill/SkillSection';
-
-import Layout from '@/layouts/Layout';
+import Layout from '@/components/Layout';
 
 export default function HomePage() {
   return (
