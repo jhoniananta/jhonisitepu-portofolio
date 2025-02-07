@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IoMenu } from 'react-icons/io5';
 
 import Button from '@/components/buttons/Button';
-import MobileDrawer from '@/components/layouts/MobileDrawer';
+import MobileDrawer from '@/components/layout/MobileDrawer';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 
