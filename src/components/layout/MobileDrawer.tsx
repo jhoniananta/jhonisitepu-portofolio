@@ -22,20 +22,35 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       </button>
       <ul className='flex flex-col justify-center items-center space-y-4'>
         <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='/'>Home</Link>
+          <Link href='#hero' onClick={onClose}>
+            About Me
+          </Link>
         </li>
         <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='/'>Skills</Link>
+          <Link href='#skill' onClick={onClose}>
+            Skill
+          </Link>
         </li>
         <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='/'>Project</Link>
+          <Link href='#experience' onClick={onClose}>
+            Experience
+          </Link>
         </li>
         <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='/'>ContactMe</Link>
+          <Link href='#project' onClick={onClose}>
+            Project
+          </Link>
+        </li>
+        <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
+          <Link href='#contact' onClick={onClose}>
+            Contact Me
+          </Link>
         </li>
         <Button className='gap-2 bg-black hover:bg-gray-800'>
           <Download />
-          <p className='text-3xl'>Resume</p>
+          <p className='text-3xl' onClick={onClose}>
+            Resume
+          </p>
         </Button>
         {/* Add other navigation links */}
       </ul>
