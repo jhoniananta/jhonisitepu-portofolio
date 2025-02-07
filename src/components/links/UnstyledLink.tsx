@@ -18,26 +18,12 @@ const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
         ? openNewTab
         : href && !href.startsWith('/') && !href.startsWith('#');
 
-    const handleClick = (
-      e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    ) => {
-      if (href.startsWith('#')) {
-        e.preventDefault();
-        const targetId = href.substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    };
-
     if (!isNewTab) {
       return (
         <Link
           href={href}
           ref={ref}
           className={className}
-          onClick={handleClick}
           {...rest}
           {...nextLinkProps}
         >
