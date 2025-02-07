@@ -1,7 +1,4 @@
-'use client';
-
-import Footer from '../layouts/Footer';
-import Navbar from '../layouts/Navbar';
+import { Footer, Navbar } from '@/layouts/NavFooter';
 
 type LayoutProps = {
   children: React.ReactNode;
