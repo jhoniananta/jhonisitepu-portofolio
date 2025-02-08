@@ -2,6 +2,7 @@
 
 import '@/lib/env';
 
+import AboutMeSection from '@/components/landingPage/AboutMe/AboutMeSection';
 import ExperienceSection from '@/components/landingPage/Experience/ExperienceSection';
 import HeroSection from '@/components/landingPage/Hero/HeroSection';
 import SkillSection from '@/components/landingPage/Skill/SkillSection';
@@ -19,6 +20,9 @@ export default function HomePage() {
         </section>
         <section id='experience' className='w-full'>
           <ExperienceSection />
+        </section>
+        <section id='about-me'>
+          <AboutMeSection />
         </section>
       </main>
     </Layout>

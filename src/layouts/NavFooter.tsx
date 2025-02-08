@@ -13,7 +13,7 @@ type NavigationItemProps = {
 };
 
 const navigationItems: NavigationItemProps[] = [
-  { text: 'About Me', href: '#about' },
+  { text: 'About Me', href: '#about-me' },
   { text: 'Skill', href: '#skill' },
   { text: 'Experience', href: '#experience' },
   { text: 'Project', href: '#project' },

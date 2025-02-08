@@ -22,7 +22,7 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       </button>
       <ul className='flex flex-col justify-center items-center space-y-4'>
         <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='#hero' onClick={onClose}>
+          <Link href='#about-me' onClick={onClose}>
             About Me
           </Link>
         </li>
