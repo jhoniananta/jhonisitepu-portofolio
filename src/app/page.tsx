@@ -2,8 +2,10 @@
 
 import '@/lib/env';
 
+import AboutMeSection from '@/components/landingPage/AboutMe/AboutMeSection';
 import ExperienceSection from '@/components/landingPage/Experience/ExperienceSection';
 import HeroSection from '@/components/landingPage/Hero/HeroSection';
+import ProjectSection from '@/components/landingPage/Project/ProjectSection';
 import SkillSection from '@/components/landingPage/Skill/SkillSection';
 import Layout from '@/components/Layout';
 
@@ -19,6 +21,12 @@ export default function HomePage() {
         </section>
         <section id='experience' className='w-full'>
           <ExperienceSection />
+        </section>
+        <section id='about-me'>
+          <AboutMeSection />
+        </section>
+        <section id='about-me' className='w-full'>
+          <ProjectSection />
         </section>
       </main>
     </Layout>
