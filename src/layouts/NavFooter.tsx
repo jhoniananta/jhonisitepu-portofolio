@@ -13,9 +13,9 @@ type NavigationItemProps = {
 };
 
 const navigationItems: NavigationItemProps[] = [
-  { text: 'About Me', href: '#about-me' },
   { text: 'Skill', href: '#skill' },
   { text: 'Experience', href: '#experience' },
+  { text: 'About Me', href: '#about-me' },
   { text: 'Project', href: '#project' },
   { text: 'Contact me', href: '#contact' },
 ];
@@ -182,6 +182,7 @@ export function Navbar() {
             <div className='flex items-center'>
               <Button
                 className={`gap-3 ${isDarkBackground ? 'bg-white border-black text-black' : 'bg-black text-white border-white'} hover:bg-gray-800 p-3 focus-visible:outline-none`}
+                variant='outline'
                 onClick={handleOpenResume}
               >
                 <h5 className='font-semibold'>Resume</h5>
