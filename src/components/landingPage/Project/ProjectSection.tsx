@@ -23,8 +23,11 @@ export default function ProjectSection() {
     <section
       ref={sectionRef}
       id='project'
-      className='flex flex-col w-full items-center justify-center text-white bg-black min-w-full'
+      className='flex flex-col w-full items-center justify-center text-white bg-black min-w-full py-10 lg:py-15 px-2 min-[375px]:px-4 md:px-10'
     >
+      <h1 className='text-[28px] leading-8 lg:text-[48px] lg:leading-[48px] font-normal my-5 lg:my-10 text-white'>
+        My <span className='font-extrabold'>Projects</span>
+      </h1>
       {projectData.slice(0, visibleProject).map((project, index) => (
         <ProjectCard key={index} index={index} {...project} />
       ))}

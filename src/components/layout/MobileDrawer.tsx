@@ -11,6 +11,10 @@ interface MobileDrawerProps {
 }
 
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
+  const handleOpenResume = () => {
+    window.open('/resume/resume_jhoni.pdf', '_blank');
+  };
+
   return (
     <div
       className={`fixed flex flex-col justify-center items-center z-10 top-0 right-0 h-full w-full bg-white text-black transition-transform duration-300 transform ${
@@ -22,11 +26,6 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       </button>
       <ul className='flex flex-col justify-center items-center space-y-4'>
         <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='#about-me' onClick={onClose}>
-            About Me
-          </Link>
-        </li>
-        <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
           <Link href='#skill' onClick={onClose}>
             Skill
           </Link>
@@ -35,6 +34,11 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           <Link href='#experience' onClick={onClose}>
             Experience
           </Link>
+        <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
+          <Link href='#about-me' onClick={onClose}>
+            About Me
+          </Link>
+        </li>
         </li>
         <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
           <Link href='#project' onClick={onClose}>
@@ -46,11 +50,14 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             Contact Me
           </Link>
         </li>
-        <Button className='gap-2 bg-black hover:bg-gray-800'>
-          <Download />
+        <Button
+          className='gap-2 bg-black hover:bg-gray-800 text-white border-white'
+          onClick={handleOpenResume}
+        >
           <p className='text-3xl' onClick={onClose}>
             Resume
           </p>
+          <Download />
         </Button>
         {/* Add other navigation links */}
       </ul>

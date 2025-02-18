@@ -17,14 +17,16 @@ export default function ProjectCard({
       <div
         className={`w-full lg:py-4 lg:px-4 md:w-1/2 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}
       >
-        <NextImage
-          loading='lazy'
-          width={530}
-          height={397}
-          src={imageUrl}
-          alt={title}
-          className='rounded-2xl shadow-lg aspect-[1.33] w-full h-auto object-cover'
-        />
+        <UnstyledLink href={linkUrl}>
+          <NextImage
+            loading='lazy'
+            width={530}
+            height={397}
+            src={imageUrl}
+            alt={title}
+            className='rounded-2xl shadow-lg aspect-[1.33] w-full h-auto object-cover'
+          />
+        </UnstyledLink>
       </div>
       <div
         className={`w-full md:w-1/2 flex flex-col justify-center text-white ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}
