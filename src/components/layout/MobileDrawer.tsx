@@ -34,11 +34,11 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           <Link href='#experience' onClick={onClose}>
             Experience
           </Link>
-        <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='#about-me' onClick={onClose}>
-            About Me
-          </Link>
-        </li>
+          <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
+            <Link href='#about-me' onClick={onClose}>
+              About Me
+            </Link>
+          </li>
         </li>
         <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
           <Link href='#project' onClick={onClose}>
