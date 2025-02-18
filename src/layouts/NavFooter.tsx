@@ -26,6 +26,10 @@ export function Navbar() {
 
   const aboutRef = React.useRef<HTMLElement>(null);
 
+  const handleOpenResume = () => {
+    window.open('/resume/resume_jhoni.pdf', '_blank');
+  };
+
   React.useEffect(() => {
     const handleScroll = () => {
       // Get the navbar element
@@ -177,7 +181,8 @@ export function Navbar() {
             </div>
             <div className='flex items-center'>
               <Button
-                className={`gap-3 ${isDarkBackground ? 'bg-white text-black' : 'bg-black text-white'} hover:bg-gray-800 p-3`}
+                className={`gap-3 ${isDarkBackground ? 'bg-white border-black text-black' : 'bg-black text-white border-white'} hover:bg-gray-800 p-3 focus-visible:outline-none`}
+                onClick={handleOpenResume}
               >
                 <h5 className='font-semibold'>Resume</h5>
                 <Download />

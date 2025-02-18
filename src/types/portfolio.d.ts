@@ -3,4 +3,5 @@ export interface ProjectCardProps {
   title: string;
   description: string;
   imageUrl: string;
+  linkUrl: string;
 }
