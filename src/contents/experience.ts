@@ -1,11 +1,11 @@
 export const experienceData = [
   {
-    companyLogo: '/images/skill/logo-winnicode.png',
-    position: 'Full Stack Developer',
-    company: 'Winnicode Garuda Teknologi',
-    duration: 'Feb 2025 - Now',
+    companyLogo: '/images/skill/consense_id_logo.jpeg',
+    position: 'Software Developer Intern',
+    company: 'PT ConSense Teknologi Indonesia',
+    duration: 'March 2025 - Now',
     description:
-      "As a Fullstack Developer at Winnicode Garuda Teknologi, I played a key role in designing and developing a seamless news portal using Next.js and MongoDB. I built a robust platform featuring a Content Management System (CMS) for efficient content creation and management, along with advanced search filters to allow users to easily navigate and find news articles by category and sub-category. I also implemented authorization mechanisms to ensure secure access and improved the platform's SEO to enhance visibility and reach. Additionally, I conducted analytical assessments of the project to optimize performance and user experience. This experience allowed me to strengthen my expertise in fullstack development, database management, and SEO optimization, while delivering a scalable and user-friendly news portal.",
+      "As a software developer intert at PT ConSense Teknologi Indonesia in Surabaya, Indoneisa, I worked on a project to develop a web-based application for the company's. My responsibilities included collaborating with a team of developers to design and implement features, as well as conducting testing and debugging to ensure the application's functionality and performance. I gained valuable experience in software development methodologies, version control systems, and agile practices, while also enhancing my technical skills in web development technologies.",
   },
   {
     companyLogo: '/images/skill/LogoISEWhite.png',

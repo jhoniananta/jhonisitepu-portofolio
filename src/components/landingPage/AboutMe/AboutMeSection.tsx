@@ -5,7 +5,7 @@ export default function AboutMeSection() {
     <section className='flex flex-col items-center justify-center lg:flex-row lg:justify-center min-h-screen w-full max-w-screen-xl py-10 lg:py-20 px-4 md:px-5 lg:px-6 gap-4 lg:gap-8 xl:gap-12 bg-white'>
       <div className='flex items-center justify-center'>
         <NextImage
-          src='/images/about-me/about-me-image.png'
+          src='/images/about-me/foto-jhoni-porto.png'
           alt='About me'
           width={525}
           height={572}
