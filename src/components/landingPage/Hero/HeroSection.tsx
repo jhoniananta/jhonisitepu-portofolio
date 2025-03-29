@@ -36,7 +36,7 @@ export default function HeroSection() {
         </div>
         <div className='flex items-center justify-center'>
           <NextImage
-            src='/images/hero/hero-banner.png'
+            src='/images/hero/foto-jhoni-porto.png'
             alt='Hero Banner'
             width={631}
             height={596}
