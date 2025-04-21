@@ -5,7 +5,7 @@ export const experienceData = [
     company: 'PT ConSense Teknologi Indonesia',
     duration: 'March 2025 - Now',
     description:
-      "As a software developer intert at PT ConSense Teknologi Indonesia in Surabaya, Indoneisa, I worked on a project to develop a web-based application for the company's. My responsibilities included collaborating with a team of developers to design and implement features, as well as conducting testing and debugging to ensure the application's functionality and performance. I gained valuable experience in software development methodologies, version control systems, and agile practices, while also enhancing my technical skills in web development technologies.",
+      "As a software developer intern at PT ConSense Teknologi Indonesia in Surabaya, Indonesia, I worked on a project to develop a web-based application for the company's. My responsibilities included collaborating with a team of developers to design and implement features, as well as conducting testing and debugging to ensure the application's functionality and performance. I gained valuable experience in software development methodologies, version control systems, and agile practices, while also enhancing my technical skills in web development technologies.",
   },
   {
     companyLogo: '/images/skill/LogoISEWhite.png',

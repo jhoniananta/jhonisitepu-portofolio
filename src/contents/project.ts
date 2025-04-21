@@ -7,6 +7,13 @@ export const projectData = [
     linkUrl: 'https://petsaurus.id/',
   },
   {
+    title: "Depa's Infection Website",
+    description:
+      "As a Frontend Developer, I was responsible for designing and implementing both user and admin dashboards for the Depa's Infection website using Next.js and TypeScript. This project focused on managing the registration process for participants of the Depa's Infection event organized by FKG UGM. My responsibilities included building various screens, integrating dynamic dashboard features, and ensuring seamless interaction between users and the admin panel. I worked closely with the design team to transform UI/UX prototypes into responsive, functional interfaces, while also handling API integration and data display to improve overall usability and performance. This experience deepened my expertise in building scalable, component-based web applications and taught me how to prioritize clarity and accessibility in event-driven platforms.",
+    imageUrl: '/images/project/depas-project.png',
+    linkUrl: 'https://depasinfection.com/',
+  },
+  {
     title: 'Todo List DevOps App',
     description:
       "As a Full-Stack Developer and Project Manager, I successfully led the development of the 'Todo List DevOps App', built using React.js for the front-end and Express.js for the back-end. The application was containerized using Docker and deployed on the Google Cloud Platform's App Engine, showcasing a comprehensive DevOps lifecycle. In this project, I gained hands-on experience in creating and managing CI/CD pipelines, ensuring smooth and automated deployments to production. I also integrated Google Cloud's monitoring tools to observe application performance and troubleshoot issues in real-time within the production environment. In addition to technical contributions, I served as the Project Manager, overseeing the team's progress, assigning tasks, and ensuring the timely delivery of project milestones. This dual role strengthened my ability to manage teams effectively while maintaining a high standard of technical execution. The project was a valuable opportunity to deepen my expertise in both development and deployment processes, as well as in leadership and collaboration",
