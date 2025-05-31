@@ -18,7 +18,10 @@ export default function SkillSection() {
   return (
     <>
       <section className='min-h-screen flex flex-col gap-5 items-center justify-center m-4 md:m-10 max-w-screen-xl bg-white'>
-        <h1 className='text-[28px] leading-8 lg:text-[48px] lg:leading-[48px] font-normal my-5' data-aos="fade-down">
+        <h1
+          className='text-[28px] leading-8 lg:text-[48px] lg:leading-[48px] font-normal my-5'
+          data-aos='fade-down'
+        >
           My <span className='font-extrabold'>Skill</span>
         </h1>
         <div className='flex flex-wrap gap-4 justify-center md:gap-8 min-[375px]:justify-between max-w-screen-lg my-5'>
@@ -27,9 +30,9 @@ export default function SkillSection() {
               key={index}
               reactIcon={skill.reactIcon}
               skillText={skill.skillText}
-              data-aos="flip-left"
+              data-aos='flip-left'
               data-aos-delay={index * 100}
-              data-aos-duration="1000"
+              data-aos-duration='1000'
             />
           ))}
         </div>

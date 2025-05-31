@@ -2,7 +2,11 @@ import clsx from 'clsx';
 
 import { SkillIconProps } from '@/types/skill';
 
-export default function SkillIcon({ reactIcon, skillText, ...props }: SkillIconProps) {
+export default function SkillIcon({
+  reactIcon,
+  skillText,
+  ...props
+}: SkillIconProps) {
   return (
     <>
       <div

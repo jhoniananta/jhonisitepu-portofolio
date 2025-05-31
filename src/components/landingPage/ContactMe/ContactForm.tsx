@@ -88,14 +88,14 @@ export default function ContactForm() {
         onSubmit={handleSubmit(onSubmit)}
         className='flex flex-col items-start w-full gap-5'
         noValidate
-        data-aos="fade-right"
-        data-aos-duration="1000"
+        data-aos='fade-right'
+        data-aos-duration='1000'
       >
         {/* Name input */}
         <div
           className='flex flex-col w-full'
-          data-aos="fade-up"
-          data-aos-delay="200"
+          data-aos='fade-up'
+          data-aos-delay='200'
         >
           <Input
             {...register('name')}
@@ -111,8 +111,8 @@ export default function ContactForm() {
         {/* Email input */}
         <div
           className='flex flex-col w-full'
-          data-aos="fade-up"
-          data-aos-delay="300"
+          data-aos='fade-up'
+          data-aos-delay='300'
         >
           <Input
             {...register('email')}
@@ -128,8 +128,8 @@ export default function ContactForm() {
         {/* Website (optional) input */}
         <div
           className='flex flex-col w-full'
-          data-aos="fade-up"
-          data-aos-delay="400"
+          data-aos='fade-up'
+          data-aos-delay='400'
         >
           <Input
             {...register('website')}
@@ -145,8 +145,8 @@ export default function ContactForm() {
         {/* Message input */}
         <div
           className='flex flex-col w-full'
-          data-aos="fade-up"
-          data-aos-delay="500"
+          data-aos='fade-up'
+          data-aos-delay='500'
         >
           <Textarea
             {...register('message')}
@@ -161,8 +161,8 @@ export default function ContactForm() {
         </div>
         <div
           className='flex flex-wrap gap-4 items-center mt-5 w-full sm:gap-10 justify-start'
-          data-aos="fade-up"
-          data-aos-delay="600"
+          data-aos='fade-up'
+          data-aos-delay='600'
         >
           <button
             type='submit'

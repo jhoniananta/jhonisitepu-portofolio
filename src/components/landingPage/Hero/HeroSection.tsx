@@ -17,7 +17,10 @@ export default function HeroSection() {
   return (
     <>
       <section className='min-h-screen flex flex-col-reverse lg:flex-row items-center justify-evenly mx-4 mt-24 lg:mt-4 lg:mx-8 gap-12 lg:gap-4 bg-white'>
-        <div className='flex flex-col gap-4 lg:gap-7 text-left max-w-[585px]' data-aos="fade-right">
+        <div
+          className='flex flex-col gap-4 lg:gap-7 text-left max-w-[585px]'
+          data-aos='fade-right'
+        >
           <div className='flex flex-col gap-4 text-left max-w-[585px]'>
             <h1 className='text-[28px] leading-8 lg:text-[48px] lg:leading-[48px] font-normal'>
               Hello I'am <span className='font-bold'>Jhoni</span>
@@ -39,7 +42,11 @@ export default function HeroSection() {
           </p>
           <IconHeroGroup />
         </div>
-        <div className='flex items-center justify-center' data-aos="fade-left" data-aos-delay="300">
+        <div
+          className='flex items-center justify-center'
+          data-aos='fade-left'
+          data-aos-delay='300'
+        >
           <NextImage
             src='/images/hero/foto-jhoni-porto.png'
             alt='Hero Banner'

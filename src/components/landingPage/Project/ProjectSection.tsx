@@ -37,8 +37,8 @@ export default function ProjectSection() {
     >
       <h1
         className='text-[28px] leading-8 lg:text-[48px] lg:leading-[48px] font-normal my-5 lg:my-10 text-white'
-        data-aos="fade-down"
-        data-aos-duration="1000"
+        data-aos='fade-down'
+        data-aos-duration='1000'
       >
         My <span className='font-extrabold'>Projects</span>
       </h1>
@@ -47,9 +47,9 @@ export default function ProjectSection() {
           key={index}
           index={index}
           {...project}
-          data-aos="fade-up"
+          data-aos='fade-up'
           data-aos-delay={index * 200}
-          data-aos-duration="1000"
+          data-aos-duration='1000'
         />
       ))}
       {visibleProject < projectData.length ? (
@@ -57,8 +57,8 @@ export default function ProjectSection() {
           onClick={handleShowMore}
           rightIcon={ChevronDownIcon}
           className='mt-4 mb-8 bg-white text-black px-6 hover:bg-black hover:text-white border-white active:bg-black active:text-white'
-          data-aos="fade-up"
-          data-aos-delay="400"
+          data-aos='fade-up'
+          data-aos-delay='400'
         >
           Show More
         </Button>
@@ -67,8 +67,8 @@ export default function ProjectSection() {
           onClick={handleShowLess}
           rightIcon={ChevronUpIcon}
           className='mt-4 mb-8 bg-white text-black px-6 hover:bg-black hover:text-white border-white active:bg-black active:text-white'
-          data-aos="fade-up"
-          data-aos-delay="400"
+          data-aos='fade-up'
+          data-aos-delay='400'
         >
           Show Less
         </Button>
