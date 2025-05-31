@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import { SkillIconProps } from '@/types/skill';
 
-export default function SkillIcon({ reactIcon, skillText }: SkillIconProps) {
+export default function SkillIcon({ reactIcon, skillText, ...props }: SkillIconProps) {
   return (
     <>
       <div
@@ -12,6 +12,7 @@ export default function SkillIcon({ reactIcon, skillText }: SkillIconProps) {
           'hover:bg-black',
           'group',
         )}
+        {...props}
       >
         {reactIcon && (
           <div

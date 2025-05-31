@@ -26,9 +26,6 @@ export default function ContactForm() {
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false);
 
-  // const notifySuccess = () => toast.success('Your message has been sent successfully.');
-  // const notifyError = () => toast.error('Failed to send message. Please try again.');
-
   const {
     handleSubmit,
     register,
@@ -91,9 +88,15 @@ export default function ContactForm() {
         onSubmit={handleSubmit(onSubmit)}
         className='flex flex-col items-start w-full gap-5'
         noValidate
+        data-aos="fade-right"
+        data-aos-duration="1000"
       >
         {/* Name input */}
-        <div className='flex flex-col w-full'>
+        <div
+          className='flex flex-col w-full'
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           <Input
             {...register('name')}
             name='name'
@@ -106,7 +109,11 @@ export default function ContactForm() {
           )}
         </div>
         {/* Email input */}
-        <div className='flex flex-col w-full'>
+        <div
+          className='flex flex-col w-full'
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <Input
             {...register('email')}
             name='email'
@@ -119,7 +126,11 @@ export default function ContactForm() {
           )}
         </div>
         {/* Website (optional) input */}
-        <div className='flex flex-col w-full'>
+        <div
+          className='flex flex-col w-full'
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
           <Input
             {...register('website')}
             name='website'
@@ -132,19 +143,27 @@ export default function ContactForm() {
           )}
         </div>
         {/* Message input */}
-        <div className='flex flex-col w-full'>
+        <div
+          className='flex flex-col w-full'
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
           <Textarea
             {...register('message')}
             name='message'
             placeholder='How can I help?*'
-            className='w-full sm:w-[500px] min-h-[140px] border-black'
+            className='w-full sm:max-w-[500px] min-h-[140px] border-black'
             aria-label='How can I help?'
           />
           {errors.message && (
             <p className='text-red-500 text-sm'>{errors.message.message}</p>
           )}
         </div>
-        <div className='flex flex-wrap gap-4 items-center mt-5 w-full sm:gap-10 justify-start'>
+        <div
+          className='flex flex-wrap gap-4 items-center mt-5 w-full sm:gap-10 justify-start'
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           <button
             type='submit'
             disabled={isSubmitting}
