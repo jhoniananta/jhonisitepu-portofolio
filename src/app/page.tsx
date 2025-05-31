@@ -13,7 +13,7 @@ import Layout from '@/components/Layout';
 export default function HomePage() {
   return (
     <Layout withNavbar={true} withFooter={true}>
-      <main className='flex flex-col w-full items-center justify-center text-black min-w-full'>
+      <main className='flex flex-col w-full items-center justify-center text-black min-w-full overflow-hidden'>
         <section id='hero'>
           <HeroSection />
         </section>
