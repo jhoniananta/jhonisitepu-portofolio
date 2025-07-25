@@ -52,7 +52,7 @@ export default function HeroSection() {
             alt='Hero Banner'
             width={631}
             height={596}
-            className='lg:w-[100%] lg:h-[100%]'
+            className='lg:w-[80%] lg:h-[100%]'
           />
         </div>
       </section>

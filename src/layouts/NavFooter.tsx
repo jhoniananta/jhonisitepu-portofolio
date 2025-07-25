@@ -27,7 +27,7 @@ export function Navbar() {
   const aboutRef = React.useRef<HTMLElement>(null);
 
   const handleOpenResume = () => {
-    window.open('/resume/resume_jhoni.pdf', '_blank');
+    window.open('/resume/jhoni_resume.pdf', '_blank');
   };
 
   React.useEffect(() => {
@@ -96,7 +96,7 @@ export function Navbar() {
     <>
       {/* Mobile Navbar */}
       <nav
-        className={`fixed top-0 left-0 z-50 w-full shadow-md bg-transparent lg:hidden ${isDarkBackground ? 'text-white' : 'text-black'}`}
+        className={`fixed top-0 left-0 z-[9999] w-full shadow-md bg-transparent lg:hidden ${isDarkBackground ? 'text-white' : 'text-black'}`}
       >
         <div className='flex overflow-hidden flex-col justify-center p-4 text-xl font-bold tracking-tight leading-tight capitalize whitespace-nowrap'>
           <div className='flex overflow-hidden gap-10 justify-between items-center w-full'>
@@ -137,7 +137,7 @@ export function Navbar() {
       </nav>
       {/* Desktop Navbar */}
       <nav
-        className={`hidden lg:flex items-center p-4 bg-transparent shadow-md fixed top-0 left-0 w-full max-h-[104px] ${isDarkBackground ? 'text-white' : 'text-black'}`}
+        className={`hidden lg:flex z-[9999] items-center p-4 bg-transparent shadow-md fixed top-0 left-0 w-full max-h-[104px] ${isDarkBackground ? 'text-white' : 'text-black'}`}
       >
         <div className='flex overflow-hidden xl:px-20 py-6 w-full'>
           <div className='flex px-8 flex-row justify-between items-center w-full'>

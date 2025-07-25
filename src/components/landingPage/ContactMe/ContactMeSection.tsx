@@ -16,7 +16,7 @@ export default function ContactMeSection() {
 
   return (
     <section
-      className='flex flex-col justify-center px-5 py-8 bg-white sm:px-20 sm:py-16 min-h-screen overflow-x-hidden'
+      className='flex flex-col justify-center px-5 py-8 bg-white sm:px-20 sm:py-16 min-h-screen overflow-x-hidden z-0'
       data-aos='fade-up'
       data-aos-duration='1000'
     >

@@ -1,11 +1,19 @@
 export const experienceData = [
+  // {
+  //   companyLogo: '/images/skill/consense_id_logo.jpeg',
+  //   position: 'Software Developer Intern',
+  //   company: 'PT ConSense Teknologi Indonesia',
+  //   duration: 'March 2025 - Now',
+  //   description:
+  //     "As a software developer intern at PT ConSense Teknologi Indonesia in Surabaya, Indonesia, I worked on a project to develop a web-based application for the company's. My responsibilities included collaborating with a team of developers to design and implement features, as well as conducting testing and debugging to ensure the application's functionality and performance. I gained valuable experience in software development methodologies, version control systems, and agile practices, while also enhancing my technical skills in web development technologies.",
+  // },
   {
-    companyLogo: '/images/skill/consense_id_logo.jpeg',
-    position: 'Software Developer Intern',
-    company: 'PT ConSense Teknologi Indonesia',
-    duration: 'March 2025 - Now',
+    companyLogo: '/images/skill/peduly_logo.png',
+    position: 'Backend Developer Intern',
+    company: 'Peduly',
+    duration: 'July 2025 - Now',
     description:
-      "As a software developer intern at PT ConSense Teknologi Indonesia in Surabaya, Indonesia, I worked on a project to develop a web-based application for the company's. My responsibilities included collaborating with a team of developers to design and implement features, as well as conducting testing and debugging to ensure the application's functionality and performance. I gained valuable experience in software development methodologies, version control systems, and agile practices, while also enhancing my technical skills in web development technologies.",
+      'At Peduly Indonesia, I developed and maintained the Laravel backend for two full scale web projects, integrating the Midtrans payment gateway, designing RESTful APIs, and managing database migrations and authentication. I also oversaw complete backend deployments on cPanel, handling environment configuration, domain and SSL setup, and performance monitoring. Additionally, I collaborated closely with frontend teams to integrate APIs and optimize data workflows for seamless user experiences.',
   },
   {
     companyLogo: '/images/skill/logo-betau.jpg',
