@@ -4,4 +4,5 @@ export interface ProjectCardProps {
   description: string;
   imageUrl: string;
   linkUrl: string;
+  techStack?: string[];
 }

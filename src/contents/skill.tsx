@@ -1,7 +1,11 @@
 import { FaGithub, FaReact } from 'react-icons/fa6';
 import { RiInfinityLine, RiTailwindCssFill } from 'react-icons/ri';
-import { SiExpress, SiNextdotjs, SiTypescript } from 'react-icons/si';
-import { TbBrandReactNative } from 'react-icons/tb';
+import {
+  SiExpress,
+  SiLaravel,
+  SiNextdotjs,
+  SiTypescript,
+} from 'react-icons/si';
 
 export const skillData = [
   {
@@ -29,8 +33,8 @@ export const skillData = [
     skillText: 'Express.js',
   },
   {
-    reactIcon: <TbBrandReactNative className='text-5xl' />,
-    skillText: 'React Native',
+    reactIcon: <SiLaravel className='text-5xl' />,
+    skillText: 'Laravel',
   },
   {
     reactIcon: <RiInfinityLine className='text-5xl' />,

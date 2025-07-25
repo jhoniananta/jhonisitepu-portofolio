@@ -11,6 +11,7 @@ export default function ProjectCard({
   description,
   imageUrl,
   linkUrl,
+  techStack,
   ...props
 }: ProjectCardProps) {
   return (
@@ -62,6 +63,21 @@ export default function ProjectCard({
         >
           {description}
         </p>
+        {/* Tech Stack Chips */}
+        <div
+          className='flex flex-wrap gap-2 mt-4'
+          data-aos='fade-up'
+          data-aos-delay='400'
+        >
+          {techStack?.map((tech, techIndex) => (
+            <span
+              key={techIndex}
+              className='px-3 py-1 text-xs font-medium bg-zinc-800 text-zinc-300 rounded-full border border-zinc-700 hover:bg-zinc-700 transition-colors '
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
         <div
           className='flex mt-2 md:mt-4 lg:mt-5 w-5 min-h-[20px]'
           data-aos='fade-up'

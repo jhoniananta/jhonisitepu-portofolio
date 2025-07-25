@@ -12,7 +12,7 @@ interface MobileDrawerProps {
 
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   const handleOpenResume = () => {
-    window.open('/resume/resume_jhoni.pdf', '_blank');
+    window.open('/resume/jhoni_resume.pdf', '_blank');
   };
 
   return (
