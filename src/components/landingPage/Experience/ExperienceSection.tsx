@@ -1,18 +1,38 @@
 import AOS from 'aos';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import 'aos/dist/aos.css';
 
 import ExperienceCard from '@/components/landingPage/Experience/ExperienceCard';
 
-import { experienceData } from '@/contents/experience';
+import { ExperienceProps } from '@/types/experience';
 
 export default function ExperienceSection() {
+  const [experiences, setExperiences] = useState<ExperienceProps[]>([]);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
+
+    fetch('/api/experiences')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          // Map snake_case from DB to camelCase props
+          setExperiences(
+            data.map((exp: Record<string, string>) => ({
+              companyLogo: exp.company_logo,
+              position: exp.position,
+              company: exp.company,
+              duration: exp.duration,
+              description: exp.description,
+            })),
+          );
+        }
+      })
+      .catch(console.error);
   }, []);
 
   return (
@@ -25,7 +45,7 @@ export default function ExperienceSection() {
         My <span className='font-extrabold'>Experience</span>
       </h1>
       <div className='flex flex-col gap-8 lg:gap-10 xl:gap-12 justify-center'>
-        {experienceData.map((experience, index) => (
+        {experiences.map((experience, index) => (
           <ExperienceCard
             key={index}
             {...experience}
@@ -38,3 +58,4 @@ export default function ExperienceSection() {
     </section>
   );
 }
+

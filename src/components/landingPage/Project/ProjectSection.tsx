@@ -1,16 +1,23 @@
 import AOS from 'aos';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import 'aos/dist/aos.css';
 
 import Button from '@/components/buttons/Button';
 
-import { projectData } from '@/contents/project';
-
 import ProjectCard from './ProjectCard';
 
+interface ProjectData {
+  title: string;
+  description: string;
+  imageUrl: string;
+  linkUrl: string;
+  techStack: string[];
+}
+
 export default function ProjectSection() {
+  const [projects, setProjects] = useState<ProjectData[]>([]);
   const [visibleProject, setIsVisibleProject] = React.useState<number>(3);
   const sectionRef = React.useRef<HTMLElement>(null);
 
@@ -19,10 +26,27 @@ export default function ProjectSection() {
       duration: 1000,
       once: true,
     });
+
+    fetch('/api/projects')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setProjects(
+            data.map((p: Record<string, string | string[]>) => ({
+              title: p.title as string,
+              description: p.description as string,
+              imageUrl: p.image_url as string,
+              linkUrl: p.link_url as string,
+              techStack: (p.tech_stack as string[]) || [],
+            })),
+          );
+        }
+      })
+      .catch(console.error);
   }, []);
 
   const handleShowMore = () => {
-    setIsVisibleProject(projectData.length);
+    setIsVisibleProject(projects.length);
   };
 
   const handleShowLess = () => {
@@ -42,7 +66,7 @@ export default function ProjectSection() {
       >
         My <span className='font-extrabold'>Projects</span>
       </h1>
-      {projectData.slice(0, visibleProject).map((project, index) => (
+      {projects.slice(0, visibleProject).map((project, index) => (
         <ProjectCard
           key={index}
           index={index}
@@ -52,7 +76,7 @@ export default function ProjectSection() {
           data-aos-duration='1000'
         />
       ))}
-      {visibleProject < projectData.length ? (
+      {visibleProject < projects.length ? (
         <Button
           onClick={handleShowMore}
           rightIcon={ChevronDownIcon}
@@ -63,16 +87,19 @@ export default function ProjectSection() {
           Show More
         </Button>
       ) : (
-        <Button
-          onClick={handleShowLess}
-          rightIcon={ChevronUpIcon}
-          className='mt-4 mb-8 bg-white text-black px-6 hover:bg-black hover:text-white border-white active:bg-black active:text-white'
-          data-aos='fade-up'
-          data-aos-delay='400'
-        >
-          Show Less
-        </Button>
+        projects.length > 3 && (
+          <Button
+            onClick={handleShowLess}
+            rightIcon={ChevronUpIcon}
+            className='mt-4 mb-8 bg-white text-black px-6 hover:bg-black hover:text-white border-white active:bg-black active:text-white'
+            data-aos='fade-up'
+            data-aos-delay='400'
+          >
+            Show Less
+          </Button>
+        )
       )}
     </section>
   );
 }
+
