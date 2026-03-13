@@ -17,8 +17,14 @@ export async function PUT(
     }
 
     const body = await request.json();
-    const { company_logo, position, company, duration, description, sort_order } =
-      body;
+    const {
+      company_logo,
+      position,
+      company,
+      duration,
+      description,
+      sort_order,
+    } = body;
 
     const { data, error } = await supabase
       .from('experiences')

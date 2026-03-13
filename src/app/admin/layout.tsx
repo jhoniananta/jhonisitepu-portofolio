@@ -100,11 +100,15 @@ export default function AdminLayout({
 
   return (
     <div className='min-h-screen bg-black flex text-white'>
-      <Toaster 
-        position="top-right" 
-        toastOptions={{ 
-          style: { background: '#18181b', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' } 
-        }} 
+      <Toaster
+        position='top-right'
+        toastOptions={{
+          style: {
+            background: '#18181b',
+            color: '#fff',
+            border: '1px solid rgba(255,255,255,0.1)',
+          },
+        }}
       />
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (

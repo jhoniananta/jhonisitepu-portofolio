@@ -211,7 +211,9 @@ export function Footer() {
             />
           </div>
           <div className='flex flex-col gap-1 lg:gap-3'>
-            <h6 className='font-semibold text-right'>&#169; {new Date().getFullYear()} Jhoni</h6>
+            <h6 className='font-semibold text-right'>
+              &#169; {new Date().getFullYear()} Jhoni
+            </h6>
           </div>
         </div>
       </div>

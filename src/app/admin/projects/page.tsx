@@ -1,24 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 import {
-  DndContext,
   closestCenter,
+  DndContext,
+  DragEndEvent,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
-  DragEndEvent,
 } from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
   useSortable,
+  verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { createClient } from '@/lib/supabase/client';
 
@@ -64,7 +64,9 @@ function SortableProjectRow({
           className='text-gray-500 hover:text-white cursor-grab active:cursor-grabbing p-1 -ml-1'
           title='Drag to reorder'
         >
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
+          <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
+            <path d='M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0z' />
+          </svg>
         </button>
         {index + 1}
       </td>
@@ -91,9 +93,7 @@ function SortableProjectRow({
           )}
         </div>
       </td>
-      <td className='px-6 py-4 text-gray-400 text-sm'>
-        {project.sort_order}
-      </td>
+      <td className='px-6 py-4 text-gray-400 text-sm'>{project.sort_order}</td>
       <td className='px-6 py-4 text-right'>
         <div className='flex items-center justify-end gap-2'>
           <button
@@ -101,14 +101,38 @@ function SortableProjectRow({
             className='p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors'
             title='Edit'
           >
-            <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'/></svg>
+            <svg
+              className='w-4 h-4'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'
+              />
+            </svg>
           </button>
           <button
             onClick={() => onDelete(project.id)}
             className='p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors'
             title='Delete'
           >
-            <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'/></svg>
+            <svg
+              className='w-4 h-4'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'
+              />
+            </svg>
           </button>
         </div>
       </td>
@@ -140,10 +164,13 @@ export default function AdminProjectsPage() {
       const data = await res.json();
       if (Array.isArray(data)) {
         // Ensure data is sorted by sort_order locally as well
-        const sortedData = [...data].sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+        const sortedData = [...data].sort(
+          (a, b) => (a.sort_order || 0) - (b.sort_order || 0),
+        );
         setProjects(sortedData);
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Failed to fetch projects:', error);
     } finally {
       setLoading(false);
@@ -158,7 +185,7 @@ export default function AdminProjectsPage() {
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   const handleDragEnd = async (event: DragEndEvent) => {
@@ -169,7 +196,7 @@ export default function AdminProjectsPage() {
       const newIndex = projects.findIndex((p) => p.id === over.id);
 
       const newProjects = arrayMove(projects, oldIndex, newIndex);
-      
+
       const updatedProjects = newProjects.map((p: Project, index: number) => ({
         ...p,
         sort_order: index + 1,
@@ -182,7 +209,10 @@ export default function AdminProjectsPage() {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(
-            updatedProjects.map((p: Project) => ({ id: p.id, sort_order: p.sort_order }))
+            updatedProjects.map((p: Project) => ({
+              id: p.id,
+              sort_order: p.sort_order,
+            })),
           ),
         });
 
@@ -196,9 +226,10 @@ export default function AdminProjectsPage() {
   };
 
   const resetForm = () => {
-    const maxSortOrder = projects.length > 0 
-      ? Math.max(...projects.map(p => p.sort_order || 0)) 
-      : 0;
+    const maxSortOrder =
+      projects.length > 0
+        ? Math.max(...projects.map((p) => p.sort_order || 0))
+        : 0;
 
     setForm({
       title: '',
@@ -228,7 +259,7 @@ export default function AdminProjectsPage() {
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
     const file = e.target.files[0];
-    
+
     setUploadingImage(true);
     try {
       const supabase = createClient();
@@ -250,6 +281,7 @@ export default function AdminProjectsPage() {
 
       setForm((prev) => ({ ...prev, image_url: data.publicUrl }));
       toast.success('Image uploaded successfully');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast.error(`Error uploading image: ${error.message}`);
     } finally {
@@ -259,7 +291,7 @@ export default function AdminProjectsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!form.image_url) {
       toast.error('Image is required. Please upload an image.');
       return;
@@ -292,7 +324,11 @@ export default function AdminProjectsPage() {
       });
 
       if (res.ok) {
-        toast.success(editingProject ? 'Project updated successfully' : 'Project created successfully');
+        toast.success(
+          editingProject
+            ? 'Project updated successfully'
+            : 'Project created successfully',
+        );
         resetForm();
         fetchProjects();
       } else {
@@ -300,6 +336,7 @@ export default function AdminProjectsPage() {
         toast.error(`Error: ${error.error}`);
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Failed to save project:', error);
       toast.error('Failed to save project');
     } finally {
@@ -319,6 +356,7 @@ export default function AdminProjectsPage() {
         toast.error('Failed to delete project');
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Failed to delete project:', error);
       toast.error('Failed to delete project');
     }
@@ -373,9 +411,7 @@ export default function AdminProjectsPage() {
                   type='text'
                   required
                   value={form.title}
-                  onChange={(e) =>
-                    setForm({ ...form, title: e.target.value })
-                  }
+                  onChange={(e) => setForm({ ...form, title: e.target.value })}
                   className='w-full bg-transparent border border-white/20 rounded px-4 py-2.5 text-white text-sm focus:ring-1 focus:ring-white focus:border-white outline-none'
                   placeholder='Project Title'
                 />
@@ -407,11 +443,17 @@ export default function AdminProjectsPage() {
                     disabled={uploadingImage}
                     className='w-full bg-transparent border border-white/20 rounded px-4 py-2 text-white text-sm focus:ring-1 focus:ring-white focus:border-white outline-none file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white hover:file:bg-white/20 transition-all'
                   />
-                  {uploadingImage && <p className='text-xs text-gray-400 mt-2'>Uploading...</p>}
+                  {uploadingImage && (
+                    <p className='text-xs text-gray-400 mt-2'>Uploading...</p>
+                  )}
                   {form.image_url && !uploadingImage && (
                     <div className='mt-3 relative w-full h-32 rounded border border-white/20 overflow-hidden bg-white/5'>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={form.image_url} alt="Preview" className="w-full h-full object-contain" />
+                      <img
+                        src={form.image_url}
+                        alt='Preview'
+                        className='w-full h-full object-contain'
+                      />
                     </div>
                   )}
                 </div>
@@ -550,4 +592,3 @@ export default function AdminProjectsPage() {
     </div>
   );
 }
-

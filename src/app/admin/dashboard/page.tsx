@@ -27,11 +27,10 @@ export default function AdminDashboardPage() {
 
         setStats({
           totalProjects: Array.isArray(projects) ? projects.length : 0,
-          totalExperiences: Array.isArray(experiences)
-            ? experiences.length
-            : 0,
+          totalExperiences: Array.isArray(experiences) ? experiences.length : 0,
         });
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Failed to fetch stats:', error);
       } finally {
         setLoading(false);
@@ -86,9 +85,7 @@ export default function AdminDashboardPage() {
     <div>
       <div className='mb-8'>
         <h1 className='text-3xl font-bold text-white'>Dashboard</h1>
-        <p className='text-gray-400 mt-1'>
-          Overview of your portfolio content
-        </p>
+        <p className='text-gray-400 mt-1'>Overview of your portfolio content</p>
       </div>
 
       {/* Stats Grid */}
@@ -121,9 +118,7 @@ export default function AdminDashboardPage() {
 
       {/* Quick Actions */}
       <div className='rounded border border-white/20 bg-black p-6'>
-        <h2 className='text-lg font-semibold text-white mb-4'>
-          Quick Actions
-        </h2>
+        <h2 className='text-lg font-semibold text-white mb-4'>Quick Actions</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
           <a
             href='/admin/projects'
@@ -145,9 +140,7 @@ export default function AdminDashboardPage() {
               </svg>
             </div>
             <div>
-              <p className='text-white font-medium text-sm'>
-                Manage Projects
-              </p>
+              <p className='text-white font-medium text-sm'>Manage Projects</p>
               <p className='text-gray-500 text-xs'>Add, edit, or remove</p>
             </div>
           </a>

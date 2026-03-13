@@ -32,6 +32,7 @@ export default function ExperienceSection() {
           );
         }
       })
+      // eslint-disable-next-line no-console
       .catch(console.error);
   }, []);
 
@@ -58,4 +59,3 @@ export default function ExperienceSection() {
     </section>
   );
 }
-

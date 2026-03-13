@@ -27,12 +27,13 @@ export async function PUT(request: Request) {
       supabase
         .from('projects')
         .update({ sort_order: item.sort_order })
-        .eq('id', item.id)
+        .eq('id', item.id),
     );
 
     await Promise.all(updates);
 
     return NextResponse.json({ success: true }, { status: 200 });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || 'Internal Server Error' },

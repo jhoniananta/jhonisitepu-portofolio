@@ -36,8 +36,14 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { company_logo, position, company, duration, description, sort_order } =
-      body;
+    const {
+      company_logo,
+      position,
+      company,
+      duration,
+      description,
+      sort_order,
+    } = body;
 
     if (!company_logo || !position || !company || !duration || !description) {
       return NextResponse.json(

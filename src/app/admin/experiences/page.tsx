@@ -1,24 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 import {
-  DndContext,
   closestCenter,
+  DndContext,
+  DragEndEvent,
   KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
-  DragEndEvent,
 } from '@dnd-kit/core';
 import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
   useSortable,
+  verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { createClient } from '@/lib/supabase/client';
 
@@ -61,7 +61,9 @@ function SortableExperienceCard({
         className='mt-1 p-1 text-gray-500 hover:text-white cursor-grab active:cursor-grabbing -ml-2'
         title='Drag to reorder'
       >
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
+        <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
+          <path d='M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM14 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0z' />
+        </svg>
       </button>
       <div className='flex items-start justify-between flex-1 min-w-0'>
         <div className='flex-1 min-w-0'>
@@ -100,7 +102,7 @@ function SortableExperienceCard({
             className='p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors'
             title='Delete'
           >
-             <svg
+            <svg
               className='w-4 h-4'
               fill='none'
               stroke='currentColor'
@@ -124,11 +126,12 @@ export default function AdminExperiencesPage() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [editingExperience, setEditingExperience] =
-    useState<Experience | null>(null);
+  const [editingExperience, setEditingExperience] = useState<Experience | null>(
+    null,
+  );
   const [saving, setSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
-  
+
   // Date states
   const [durationStart, setDurationStart] = useState('');
   const [durationEnd, setDurationEnd] = useState('');
@@ -148,10 +151,13 @@ export default function AdminExperiencesPage() {
       const res = await fetch('/api/experiences');
       const data = await res.json();
       if (Array.isArray(data)) {
-        const sortedData = [...data].sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+        const sortedData = [...data].sort(
+          (a, b) => (a.sort_order || 0) - (b.sort_order || 0),
+        );
         setExperiences(sortedData);
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Failed to fetch experiences:', error);
     } finally {
       setLoading(false);
@@ -166,7 +172,7 @@ export default function AdminExperiencesPage() {
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   const handleDragEnd = async (event: DragEndEvent) => {
@@ -177,11 +183,13 @@ export default function AdminExperiencesPage() {
       const newIndex = experiences.findIndex((e) => e.id === over.id);
 
       const newExperiences = arrayMove(experiences, oldIndex, newIndex);
-      
-      const updatedExperiences = newExperiences.map((e: Experience, index: number) => ({
-        ...e,
-        sort_order: index + 1,
-      }));
+
+      const updatedExperiences = newExperiences.map(
+        (e: Experience, index: number) => ({
+          ...e,
+          sort_order: index + 1,
+        }),
+      );
 
       setExperiences(updatedExperiences);
 
@@ -190,7 +198,10 @@ export default function AdminExperiencesPage() {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(
-            updatedExperiences.map((e: Experience) => ({ id: e.id, sort_order: e.sort_order }))
+            updatedExperiences.map((e: Experience) => ({
+              id: e.id,
+              sort_order: e.sort_order,
+            })),
           ),
         });
 
@@ -204,9 +215,10 @@ export default function AdminExperiencesPage() {
   };
 
   const resetForm = () => {
-    const maxSortOrder = experiences.length > 0 
-      ? Math.max(...experiences.map(e => e.sort_order || 0)) 
-      : 0;
+    const maxSortOrder =
+      experiences.length > 0
+        ? Math.max(...experiences.map((e) => e.sort_order || 0))
+        : 0;
 
     setForm({
       company_logo: '',
@@ -264,7 +276,7 @@ export default function AdminExperiencesPage() {
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
     const file = e.target.files[0];
-    
+
     setUploadingImage(true);
     try {
       const supabase = createClient();
@@ -286,6 +298,7 @@ export default function AdminExperiencesPage() {
 
       setForm((prev) => ({ ...prev, company_logo: data.publicUrl }));
       toast.success('Company logo uploaded successfully');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast.error(`Error uploading image: ${error.message}`);
     } finally {
@@ -295,7 +308,7 @@ export default function AdminExperiencesPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!form.company_logo) {
       toast.error('Company logo is required. Please upload an image.');
       return;
@@ -313,12 +326,18 @@ export default function AdminExperiencesPage() {
         if (!val) return '';
         const [year, month] = val.split('-');
         const date = new Date(parseInt(year), parseInt(month) - 1, 1);
-        return date.toLocaleString('default', { month: 'short', year: 'numeric' });
+        return date.toLocaleString('default', {
+          month: 'short',
+          year: 'numeric',
+        });
       };
 
       const startObj = formatMonthYear(durationStart);
       const endObj = isCurrent ? 'Present' : formatMonthYear(durationEnd);
-      const finalDuration = startObj && endObj ? `${startObj} - ${endObj}` : startObj || 'Unknown Duration';
+      const finalDuration =
+        startObj && endObj
+          ? `${startObj} - ${endObj}`
+          : startObj || 'Unknown Duration';
 
       const payload = { ...form, duration: finalDuration };
 
@@ -329,7 +348,11 @@ export default function AdminExperiencesPage() {
       });
 
       if (res.ok) {
-        toast.success(editingExperience ? 'Experience updated successfully' : 'Experience created successfully');
+        toast.success(
+          editingExperience
+            ? 'Experience updated successfully'
+            : 'Experience created successfully',
+        );
         resetForm();
         fetchExperiences();
       } else {
@@ -337,6 +360,7 @@ export default function AdminExperiencesPage() {
         toast.error(`Error: ${error.error}`);
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Failed to save experience:', error);
       toast.error('Failed to save experience');
     } finally {
@@ -356,6 +380,7 @@ export default function AdminExperiencesPage() {
         toast.error('Failed to delete experience');
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Failed to delete experience:', error);
       toast.error('Failed to delete experience');
     }
@@ -366,9 +391,7 @@ export default function AdminExperiencesPage() {
       <div className='flex items-center justify-between mb-8'>
         <div>
           <h1 className='text-3xl font-bold text-white'>Experiences</h1>
-          <p className='text-gray-400 mt-1'>
-            Manage your work experiences
-          </p>
+          <p className='text-gray-400 mt-1'>Manage your work experiences</p>
         </div>
         <button
           onClick={() => {
@@ -448,11 +471,17 @@ export default function AdminExperiencesPage() {
                     disabled={uploadingImage}
                     className='w-full bg-transparent border border-white/20 rounded px-4 py-2 text-white text-sm focus:ring-1 focus:ring-white focus:border-white outline-none file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-white/10 file:text-white hover:file:bg-white/20 transition-all'
                   />
-                  {uploadingImage && <p className='text-xs text-gray-400 mt-2'>Uploading...</p>}
+                  {uploadingImage && (
+                    <p className='text-xs text-gray-400 mt-2'>Uploading...</p>
+                  )}
                   {form.company_logo && !uploadingImage && (
                     <div className='mt-3 relative w-full h-32 rounded border border-white/20 overflow-hidden bg-white/5'>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={form.company_logo} alt="Preview" className="w-full h-full object-contain" />
+                      <img
+                        src={form.company_logo}
+                        alt='Preview'
+                        className='w-full h-full object-contain'
+                      />
                     </div>
                   )}
                 </div>
@@ -474,7 +503,12 @@ export default function AdminExperiencesPage() {
                 <label className='flex text-sm font-medium text-gray-300 mb-1 justify-between'>
                   <span>End Date *</span>
                   <label className='flex items-center gap-2 cursor-pointer text-xs'>
-                    <input type="checkbox" checked={isCurrent} onChange={(e) => setIsCurrent(e.target.checked)} className="rounded border-white/20 bg-transparent text-purple-600 focus:ring-purple-600 focus:ring-offset-black" />
+                    <input
+                      type='checkbox'
+                      checked={isCurrent}
+                      onChange={(e) => setIsCurrent(e.target.checked)}
+                      className='rounded border-white/20 bg-transparent text-purple-600 focus:ring-purple-600 focus:ring-offset-black'
+                    />
                     Current Job
                   </label>
                 </label>
@@ -549,9 +583,7 @@ export default function AdminExperiencesPage() {
         {loading ? (
           <div className='rounded border border-white/20 bg-black p-8 text-center'>
             <div className='w-8 h-8 border-2 border-gray-600 border-t-white rounded-full animate-spin mx-auto' />
-            <p className='text-gray-400 mt-3 text-sm'>
-              Loading experiences...
-            </p>
+            <p className='text-gray-400 mt-3 text-sm'>Loading experiences...</p>
           </div>
         ) : experiences.length === 0 ? (
           <div className='rounded border border-white/20 bg-black p-12 text-center'>
@@ -585,4 +617,3 @@ export default function AdminExperiencesPage() {
     </div>
   );
 }
-

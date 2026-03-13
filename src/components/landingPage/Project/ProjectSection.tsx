@@ -42,6 +42,7 @@ export default function ProjectSection() {
           );
         }
       })
+      // eslint-disable-next-line no-console
       .catch(console.error);
   }, []);
 
@@ -102,4 +103,3 @@ export default function ProjectSection() {
     </section>
   );
 }
-
