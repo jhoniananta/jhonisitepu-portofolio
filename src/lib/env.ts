@@ -15,6 +15,22 @@ const envVariables = z.object({
 
 envVariables.parse(process.env);
 
+const supabaseEnvVariables = z.object({
+  NEXT_PUBLIC_SUPABASE_URL: z.string().min(1),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
+});
+
+let supabaseEnv: z.infer<typeof supabaseEnvVariables> | undefined;
+
+export function getSupabaseEnv() {
+  supabaseEnv ??= supabaseEnvVariables.parse({
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  });
+
+  return supabaseEnv;
+}
+
 declare global {
   namespace NodeJS {
     // eslint-disable-next-line @typescript-eslint/no-empty-interface

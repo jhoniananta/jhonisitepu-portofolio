@@ -25,10 +25,10 @@ export default function AdminLayout({
       } = await supabase.auth.getUser();
       setUserEmail(user?.email ?? null);
     };
+
     getUser();
   }, []);
 
-  // Don't show admin layout on login page
   if (pathname === '/admin/login') {
     return <>{children}</>;
   }
@@ -96,6 +96,25 @@ export default function AdminLayout({
         </svg>
       ),
     },
+    {
+      name: 'Blog',
+      href: '/admin/blog',
+      icon: (
+        <svg
+          className='w-5 h-5'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+        >
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth={2}
+            d='M7 8h10M7 12h6m-6 4h10M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z'
+          />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -110,7 +129,7 @@ export default function AdminLayout({
           },
         }}
       />
-      {/* Mobile sidebar overlay */}
+
       {sidebarOpen && (
         <div
           className='fixed inset-0 bg-black/50 z-40 lg:hidden'
@@ -118,14 +137,12 @@ export default function AdminLayout({
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-black border-r border-white/20 transform transition-transform duration-200 lg:transform-none ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
         <div className='flex flex-col h-full'>
-          {/* Logo */}
           <div className='p-6 border-b border-white/20'>
             <Link href='/admin/dashboard' className='flex items-center gap-3'>
               <div className='w-8 h-8 bg-white text-black rounded flex items-center justify-center'>
@@ -135,10 +152,10 @@ export default function AdminLayout({
             </Link>
           </div>
 
-          {/* Navigation */}
           <nav className='flex-1 p-4 space-y-1'>
             {navItems.map((item) => {
               const isActive = pathname === item.href;
+
               return (
                 <Link
                   key={item.name}
@@ -157,7 +174,6 @@ export default function AdminLayout({
             })}
           </nav>
 
-          {/* User Info */}
           <div className='p-4 border-t border-white/20'>
             <div className='flex items-center gap-3 px-4 py-3 rounded border border-white/20'>
               <div className='flex-1 min-w-0'>
@@ -166,6 +182,7 @@ export default function AdminLayout({
                 </p>
               </div>
             </div>
+
             <button
               onClick={handleSignOut}
               className='w-full mt-2 flex items-center justify-center gap-2 px-4 py-2.5 text-gray-400 hover:text-white rounded text-sm transition-colors duration-200'
@@ -189,9 +206,7 @@ export default function AdminLayout({
         </div>
       </aside>
 
-      {/* Main content */}
       <div className='flex-1 flex flex-col min-w-0'>
-        {/* Top bar */}
         <header className='sticky top-0 z-30 bg-black/80 backdrop-blur-xl border-b border-white/20 px-6 py-4'>
           <div className='flex items-center justify-between'>
             <button
@@ -212,16 +227,16 @@ export default function AdminLayout({
                 />
               </svg>
             </button>
+
             <Link
               href='/'
               className='text-sm text-gray-400 hover:text-white transition-colors'
             >
-              ← Back to Site
+              {'<-'} Back to Site
             </Link>
           </div>
         </header>
 
-        {/* Page content */}
         <main className='flex-1 p-6'>{children}</main>
       </div>
     </div>

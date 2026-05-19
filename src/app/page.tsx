@@ -3,6 +3,7 @@
 import '@/lib/env';
 
 import AboutMeSection from '@/components/landingPage/AboutMe/AboutMeSection';
+import BlogPreviewSection from '@/components/landingPage/Blog/BlogPreviewSection';
 import ContactMeSection from '@/components/landingPage/ContactMe/ContactMeSection';
 import ExperienceSection from '@/components/landingPage/Experience/ExperienceSection';
 import HeroSection from '@/components/landingPage/Hero/HeroSection';
@@ -28,6 +29,9 @@ export default function HomePage() {
         </section>
         <section id='project' className='w-full'>
           <ProjectSection />
+        </section>
+        <section id='blog' className='w-full'>
+          <BlogPreviewSection />
         </section>
         <section id='contact'>
           <ContactMeSection />

@@ -190,3 +190,116 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .blog-prose {
+    @apply text-base leading-8 text-neutral-700;
+  }
+
+  .blog-prose > * + * {
+    @apply mt-6;
+  }
+
+  .blog-prose h2 {
+    @apply mt-12 font-sora text-3xl font-semibold text-black;
+  }
+
+  .blog-prose h3 {
+    @apply mt-10 font-sora text-2xl font-semibold text-black;
+  }
+
+  .blog-prose p,
+  .blog-prose li {
+    @apply text-base leading-8 text-neutral-700;
+  }
+
+  .blog-prose a {
+    @apply text-black underline decoration-neutral-400 underline-offset-4 transition-colors hover:text-neutral-600;
+  }
+
+  .blog-prose ul {
+    @apply ml-5 list-disc space-y-2;
+  }
+
+  .blog-prose ol {
+    @apply ml-5 list-decimal space-y-2;
+  }
+
+  .blog-prose blockquote {
+    @apply rounded-r-2xl border-l-4 border-black bg-neutral-100 px-5 py-4 italic text-neutral-700;
+  }
+
+  .blog-prose hr {
+    @apply my-10 border-neutral-200;
+  }
+
+  .blog-prose strong {
+    @apply font-semibold text-black;
+  }
+
+  .blog-prose code {
+    @apply rounded bg-neutral-100 px-1.5 py-0.5 text-[0.95em] text-neutral-900;
+  }
+
+  .blog-prose pre {
+    @apply overflow-x-auto rounded-[24px] bg-slate-950 px-5 py-4 text-sm text-slate-100;
+  }
+
+  .blog-prose pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+
+  .blog-editor > * + * {
+    @apply mt-5;
+  }
+
+  .blog-editor h2 {
+    @apply font-sora text-3xl font-semibold text-white;
+  }
+
+  .blog-editor h3 {
+    @apply font-sora text-2xl font-semibold text-white;
+  }
+
+  .blog-editor p,
+  .blog-editor li {
+    @apply text-base leading-8 text-white;
+  }
+
+  .blog-editor ul {
+    @apply ml-5 list-disc space-y-2;
+  }
+
+  .blog-editor ol {
+    @apply ml-5 list-decimal space-y-2;
+  }
+
+  .blog-editor blockquote {
+    @apply rounded-r-2xl border-l-4 border-sky-400 bg-white/5 px-5 py-4 italic text-white/80;
+  }
+
+  .blog-editor a {
+    @apply text-sky-300 underline decoration-sky-500 underline-offset-4;
+  }
+
+  .blog-editor hr {
+    @apply border-white/10;
+  }
+
+  .blog-editor code {
+    @apply rounded bg-white/10 px-1.5 py-0.5 text-[0.95em] text-sky-100;
+  }
+
+  .blog-editor pre {
+    @apply overflow-x-auto rounded-[24px] border border-white/10 bg-black/60 px-5 py-4 text-sm text-white;
+  }
+
+  .blog-editor pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+
+  .blog-editor p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    @apply pointer-events-none float-left h-0 text-white/30;
+  }
+}

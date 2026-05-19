@@ -1,7 +1,10 @@
+'use client';
+
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Download } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import Button from '@/components/buttons/Button';
 
@@ -11,8 +14,19 @@ interface MobileDrawerProps {
 }
 
 export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
+  const pathname = usePathname();
+  const navigationItems = [
+    { label: 'Skill', href: '/#skill' },
+    { label: 'Experience', href: '/#experience' },
+    { label: 'About Me', href: '/#about-me' },
+    { label: 'Project', href: '/#project' },
+    { label: 'Blog', href: pathname.startsWith('/blog/') ? '/blog' : '/#blog' },
+    { label: 'Contact Me', href: '/#contact' },
+  ];
+
   const handleOpenResume = () => {
     window.open('/resume/jhoni_resume.pdf', '_blank');
+    onClose();
   };
 
   return (
@@ -24,42 +38,26 @@ export default function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
       <button className='absolute right-7 top-4 p-3' onClick={onClose}>
         <FontAwesomeIcon className='text-5xl' icon={faXmark} />
       </button>
+
       <ul className='flex flex-col justify-center items-center space-y-4'>
-        <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='#skill' onClick={onClose}>
-            Skill
-          </Link>
-        </li>
-        <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='#experience' onClick={onClose}>
-            Experience
-          </Link>
-          <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-            <Link href='#about-me' onClick={onClose}>
-              About Me
+        {navigationItems.map((item) => (
+          <li
+            key={item.label}
+            className='text-3xl transition-colors hover:text-neutral-500 hover:font-semibold'
+          >
+            <Link href={item.href} onClick={onClose}>
+              {item.label}
             </Link>
           </li>
-        </li>
-        <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='#project' onClick={onClose}>
-            Project
-          </Link>
-        </li>
-        <li className='text-3xl hover:text-blue-900 hover:font-semibold'>
-          <Link href='#contact' onClick={onClose}>
-            Contact Me
-          </Link>
-        </li>
+        ))}
+
         <Button
           className='gap-2 bg-black hover:bg-gray-800 text-white border-white'
           onClick={handleOpenResume}
         >
-          <p className='text-3xl' onClick={onClose}>
-            Resume
-          </p>
+          <span className='text-3xl'>Resume</span>
           <Download />
         </Button>
-        {/* Add other navigation links */}
       </ul>
     </div>
   );

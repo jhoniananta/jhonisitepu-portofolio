@@ -5,29 +5,34 @@ import { useEffect, useState } from 'react';
 interface Stats {
   totalProjects: number;
   totalExperiences: number;
+  totalBlogs: number;
 }
 
 export default function AdminDashboardPage() {
   const [stats, setStats] = useState<Stats>({
     totalProjects: 0,
     totalExperiences: 0,
+    totalBlogs: 0,
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [projectsRes, experiencesRes] = await Promise.all([
+        const [projectsRes, experiencesRes, blogRes] = await Promise.all([
           fetch('/api/projects'),
           fetch('/api/experiences'),
+          fetch('/api/blog?scope=all'),
         ]);
 
         const projects = await projectsRes.json();
         const experiences = await experiencesRes.json();
+        const blogPosts = await blogRes.json();
 
         setStats({
           totalProjects: Array.isArray(projects) ? projects.length : 0,
           totalExperiences: Array.isArray(experiences) ? experiences.length : 0,
+          totalBlogs: Array.isArray(blogPosts) ? blogPosts.length : 0,
         });
       } catch (error) {
         // eslint-disable-next-line no-console
@@ -79,6 +84,25 @@ export default function AdminDashboardPage() {
         </svg>
       ),
     },
+    {
+      title: 'Total Blog Posts',
+      value: stats.totalBlogs,
+      icon: (
+        <svg
+          className='w-6 h-6'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+        >
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth={2}
+            d='M7 8h10M7 12h6m-6 4h10M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z'
+          />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -88,8 +112,7 @@ export default function AdminDashboardPage() {
         <p className='text-gray-400 mt-1'>Overview of your portfolio content</p>
       </div>
 
-      {/* Stats Grid */}
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-8'>
+      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8'>
         {statCards.map((card) => (
           <div
             key={card.title}
@@ -116,10 +139,9 @@ export default function AdminDashboardPage() {
         ))}
       </div>
 
-      {/* Quick Actions */}
       <div className='rounded border border-white/20 bg-black p-6'>
         <h2 className='text-lg font-semibold text-white mb-4'>Quick Actions</h2>
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'>
           <a
             href='/admin/projects'
             className='flex items-center gap-3 p-4 rounded bg-transparent hover:bg-white/5 border border-white/20 transition-colors duration-200 group'
@@ -168,6 +190,30 @@ export default function AdminDashboardPage() {
                 Manage Experiences
               </p>
               <p className='text-gray-500 text-xs'>Add, edit, or remove</p>
+            </div>
+          </a>
+          <a
+            href='/admin/blog'
+            className='flex items-center gap-3 p-4 rounded bg-transparent hover:bg-white/5 border border-white/20 transition-colors duration-200 group'
+          >
+            <div className='w-10 h-10 rounded border border-white/20 flex items-center justify-center text-white'>
+              <svg
+                className='w-5 h-5'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={2}
+                  d='M12 4v16m8-8H4'
+                />
+              </svg>
+            </div>
+            <div>
+              <p className='text-white font-medium text-sm'>Manage Blog</p>
+              <p className='text-gray-500 text-xs'>Write, publish, or draft</p>
             </div>
           </a>
         </div>

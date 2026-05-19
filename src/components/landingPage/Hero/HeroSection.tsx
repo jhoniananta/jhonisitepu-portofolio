@@ -26,19 +26,19 @@ export default function HeroSection() {
               Hello I'am <span className='font-bold'>Jhoni</span>
             </h1>
             <h1 className='font-bold text-[28px] leading-8 lg:text-[48px] lg:leading-[48px]'>
-              Frontend Developer
+              Software Engineer
             </h1>
             <h1 className='font-normal text-[28px] leading-8 lg:text-[48px] lg:leading-[48px]'>
               Based in <span className='font-bold'>Indonesia</span>
             </h1>
           </div>
           <p className='font-normal text-base leading-6'>
-            I'm Jhoni Ananta Sitepu an undergraduated Information Systems who is
-            highly organized with an interest in technology, also discipline,
-            active and responsible worker who has passion in carrying out
-            organizational activites and social work to develop my knowledge and
-            skills. I aspire to keep learning and improving to be the best and
-            succesful version of myself
+            I'm Jhoni Ananta Sitepu an Magna Cumlaude Graduate From Information
+            Sytems ITS who is highly organized with an interest in technology,
+            also discipline, active and responsible worker who has passion in
+            carrying out organizational activites and social work to develop my
+            knowledge and skills. I aspire to keep learning and improving to be
+            the best and succesful version of myself
           </p>
           <IconHeroGroup />
         </div>

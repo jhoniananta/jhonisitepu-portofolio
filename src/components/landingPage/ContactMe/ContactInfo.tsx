@@ -27,7 +27,6 @@ export default function ContactInfo() {
           data-aos-duration='1000'
         >
           <h3>jhoniananta@gmail.com</h3>
-          <h3 className='mt-3 sm:mt-4'>081226030023</h3>
         </div>
       </div>
     </div>
